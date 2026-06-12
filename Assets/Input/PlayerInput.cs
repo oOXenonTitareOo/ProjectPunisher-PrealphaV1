@@ -154,6 +154,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponDrop"",
+                    ""type"": ""Button"",
+                    ""id"": ""b4b18dba-2428-4a24-8ec6-d2ffc02f8ffe"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -277,6 +286,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""WeaponPickUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a34255b3-f18d-4a7f-924a-e99eed54cd4a"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponDrop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -292,6 +312,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_ShootRelease = m_OnFoot.FindAction("ShootRelease", throwIfNotFound: true);
         m_OnFoot_Reload = m_OnFoot.FindAction("Reload", throwIfNotFound: true);
         m_OnFoot_WeaponPickUp = m_OnFoot.FindAction("WeaponPickUp", throwIfNotFound: true);
+        m_OnFoot_WeaponDrop = m_OnFoot.FindAction("WeaponDrop", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -379,6 +400,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_ShootRelease;
     private readonly InputAction m_OnFoot_Reload;
     private readonly InputAction m_OnFoot_WeaponPickUp;
+    private readonly InputAction m_OnFoot_WeaponDrop;
     /// <summary>
     /// Provides access to input actions defined in input action map "OnFoot".
     /// </summary>
@@ -418,6 +440,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "OnFoot/WeaponPickUp".
         /// </summary>
         public InputAction @WeaponPickUp => m_Wrapper.m_OnFoot_WeaponPickUp;
+        /// <summary>
+        /// Provides access to the underlying input action "OnFoot/WeaponDrop".
+        /// </summary>
+        public InputAction @WeaponDrop => m_Wrapper.m_OnFoot_WeaponDrop;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -465,6 +491,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @WeaponPickUp.started += instance.OnWeaponPickUp;
             @WeaponPickUp.performed += instance.OnWeaponPickUp;
             @WeaponPickUp.canceled += instance.OnWeaponPickUp;
+            @WeaponDrop.started += instance.OnWeaponDrop;
+            @WeaponDrop.performed += instance.OnWeaponDrop;
+            @WeaponDrop.canceled += instance.OnWeaponDrop;
         }
 
         /// <summary>
@@ -497,6 +526,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @WeaponPickUp.started -= instance.OnWeaponPickUp;
             @WeaponPickUp.performed -= instance.OnWeaponPickUp;
             @WeaponPickUp.canceled -= instance.OnWeaponPickUp;
+            @WeaponDrop.started -= instance.OnWeaponDrop;
+            @WeaponDrop.performed -= instance.OnWeaponDrop;
+            @WeaponDrop.canceled -= instance.OnWeaponDrop;
         }
 
         /// <summary>
@@ -586,5 +618,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnWeaponPickUp(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WeaponDrop" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWeaponDrop(InputAction.CallbackContext context);
     }
 }

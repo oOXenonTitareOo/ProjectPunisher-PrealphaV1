@@ -66,10 +66,7 @@ public class WeaponPickup : MonoBehaviour
     {
         if(!isLookedAt) return;
 
-        if(player.gun != null)
-        {
-            Destroy(player.gun.gameObject);
-        }
+        player.OnWeaponDrop();
 
         GameObject newWeapon = Instantiate(weaponPrefab, player.gunHolder);
         newWeapon.transform.localPosition = Vector3.zero;

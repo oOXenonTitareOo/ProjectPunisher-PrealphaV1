@@ -113,6 +113,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   weaponFlash: {fileID: 566970692836718607, guid: 472155c9e5c6b4e41b80bc1828bc717e, type: 3}
   muzzleFlash: {fileID: 1385555859113568446, guid: 643f7b4af236e1543880b75d83139956, type: 3}
+  droppedWeapon: {fileID: 0}
   playerRb: {fileID: 0}
 --- !u!1 &4728708630031050305
 GameObject:
@@ -210,6 +211,7 @@ MonoBehaviour:
   bullet: {fileID: 3575611928538805115, guid: 6cfb32f088276ae429e8e453c1535d45, type: 3}
   weaponFlash: {fileID: 566970692836718607, guid: 472155c9e5c6b4e41b80bc1828bc717e, type: 3}
   muzzleFlash: {fileID: 1385555859113568446, guid: 643f7b4af236e1543880b75d83139956, type: 3}
+  droppedWeapon: {fileID: 4965438261709640327, guid: f78ba622e9956024a8c5bfbcac9b948a, type: 3}
   playerRb: {fileID: 0}
 --- !u!114 &1552604652141262883
 MonoBehaviour:
@@ -326,6 +328,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  recoilPositionOffset: {x: 0, y: 0, z: 0}
+  recoilRotationOffset: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &808762607170525401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,9 +371,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca5da9c86eca5c4aa546657489525ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSway
-  swayAmount: 2
-  swaySmoothness: 10
-  maxSwayAmount: 5
+  swayAmount: 12
+  maxSwayAmount: 25
+  positionalSwayAmount: 0.2
+  maxPositionalSwayAmount: 0.1
+  positionalSwaySmoothing: 8
+  smoothPosSwayX: 2
+  smoothPosSwayY: 2
+  swayCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 4
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 15
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &3863976444160875730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +560,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   weaponFlash: {fileID: 566970692836718607, guid: 472155c9e5c6b4e41b80bc1828bc717e, type: 3}
   muzzleFlash: {fileID: 1385555859113568446, guid: 643f7b4af236e1543880b75d83139956, type: 3}
+  droppedWeapon: {fileID: 0}
   playerRb: {fileID: 0}
 --- !u!1 &8502960412684221905
 GameObject:
@@ -644,6 +677,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   weaponFlash: {fileID: 566970692836718607, guid: 472155c9e5c6b4e41b80bc1828bc717e, type: 3}
   muzzleFlash: {fileID: 1385555859113568446, guid: 643f7b4af236e1543880b75d83139956, type: 3}
+  droppedWeapon: {fileID: 0}
   playerRb: {fileID: 0}
 --- !u!114 &1657498475525218062
 MonoBehaviour:
@@ -7119,6 +7153,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   weaponFlash: {fileID: 566970692836718607, guid: 472155c9e5c6b4e41b80bc1828bc717e, type: 3}
   muzzleFlash: {fileID: 1385555859113568446, guid: 643f7b4af236e1543880b75d83139956, type: 3}
+  droppedWeapon: {fileID: 0}
   playerRb: {fileID: 0}
 --- !u!114 &6946649247508269337
 MonoBehaviour:

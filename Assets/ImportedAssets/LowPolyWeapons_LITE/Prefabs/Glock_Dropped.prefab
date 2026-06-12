@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2984087062438588010}
   - component: {fileID: 2072397264756412093}
   - component: {fileID: 3758466581420811037}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_01_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,6 +113,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   weaponFlash: {fileID: 566970692836718607, guid: 472155c9e5c6b4e41b80bc1828bc717e, type: 3}
   muzzleFlash: {fileID: 1385555859113568446, guid: 643f7b4af236e1543880b75d83139956, type: 3}
+  droppedWeapon: {fileID: 0}
   playerRb: {fileID: 0}
 --- !u!1 &4728708630031050305
 GameObject:
@@ -123,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8648924039103686577}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShellEjector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,11 +155,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5738456080911321149}
-  - component: {fileID: -4450748014815235254}
   - component: {fileID: 1162378198965975251}
   - component: {fileID: -4646114760854334137}
   - component: {fileID: 1785296275455930281}
-  m_Layer: 0
+  - component: {fileID: 2465480001367124459}
+  m_Layer: 10
   m_Name: Glock_Dropped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,36 +187,6 @@ Transform:
   - {fileID: 8648924039103686577}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4450748014815235254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4965438261709640327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 961d5e8d6d999ec4cbdbeb112e5af561, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: OnFoot
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!54 &1162378198965975251
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -279,6 +250,36 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: f82759ab02bb9cf46bddf79b54b1738c, type: 2}
   weaponPrefab: {fileID: 4965438261709640327, guid: a35b8c32acba1334b9b31dfe8cdbc9be, type: 3}
   lookRange: 3
+--- !u!114 &2465480001367124459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965438261709640327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 961d5e8d6d999ec4cbdbeb112e5af561, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 3d9e9ceb-d966-4e50-b4a4-70f92a8e47a4
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &6588261295936147787
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6092908655178524118}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +323,7 @@ GameObject:
   - component: {fileID: 3141442408904332027}
   - component: {fileID: 3022981560694259401}
   - component: {fileID: 5709392461524823611}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_01_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,6 +424,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   weaponFlash: {fileID: 566970692836718607, guid: 472155c9e5c6b4e41b80bc1828bc717e, type: 3}
   muzzleFlash: {fileID: 1385555859113568446, guid: 643f7b4af236e1543880b75d83139956, type: 3}
+  droppedWeapon: {fileID: 0}
   playerRb: {fileID: 0}
 --- !u!1 &8502960412684221905
 GameObject:
@@ -437,7 +439,7 @@ GameObject:
   - component: {fileID: 2952207158904981720}
   - component: {fileID: 2071487282965253663}
   - component: {fileID: 1657498475525218062}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,6 +541,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   weaponFlash: {fileID: 566970692836718607, guid: 472155c9e5c6b4e41b80bc1828bc717e, type: 3}
   muzzleFlash: {fileID: 1385555859113568446, guid: 643f7b4af236e1543880b75d83139956, type: 3}
+  droppedWeapon: {fileID: 0}
   playerRb: {fileID: 0}
 --- !u!114 &1657498475525218062
 MonoBehaviour:
@@ -6913,7 +6916,7 @@ GameObject:
   - component: {fileID: 9136702200399345792}
   - component: {fileID: 5929576129496457058}
   - component: {fileID: 7078585064171323569}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_01_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7014,6 +7017,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   weaponFlash: {fileID: 566970692836718607, guid: 472155c9e5c6b4e41b80bc1828bc717e, type: 3}
   muzzleFlash: {fileID: 1385555859113568446, guid: 643f7b4af236e1543880b75d83139956, type: 3}
+  droppedWeapon: {fileID: 0}
   playerRb: {fileID: 0}
 --- !u!114 &7078585064171323569
 MonoBehaviour:

@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9a7c09a0b820d43897afe20157a295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  fireRate: 0.12
+  fireRate: 0.15
   nextTimeToFire: 0
   magSize: 30
   currentAmmo: 0
@@ -647,6 +647,7 @@ MonoBehaviour:
   bullet: {fileID: 5341742223406746680, guid: 9c3cddd6060b7cc4eadfb9cefcf6e7db, type: 3}
   weaponFlash: {fileID: 566970692836718607, guid: 472155c9e5c6b4e41b80bc1828bc717e, type: 3}
   muzzleFlash: {fileID: 1385555859113568446, guid: 643f7b4af236e1543880b75d83139956, type: 3}
+  droppedWeapon: {fileID: 5786097810451525583, guid: 129a3364df9a96545bafbbb0521281ba, type: 3}
   playerRb: {fileID: 0}
 --- !u!114 &8554803871655889326
 MonoBehaviour:
@@ -661,7 +662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponRecoil
   recoilBackward: 0.05
-  recoilUpward: 0.02
+  recoilUpward: 0.03
   recoilRotation: 4
   recoilSpeed: 2.5
   backwardKickCurve:
@@ -743,16 +744,16 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.2
+      time: 0.3
       value: 1
-      inSlope: -15.890458
-      outSlope: -15.890458
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.012694523
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.4
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
@@ -763,6 +764,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  recoilPositionOffset: {x: 0, y: 0, z: 0}
+  recoilRotationOffset: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &4512903301161636421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,9 +821,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca5da9c86eca5c4aa546657489525ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSway
-  swayAmount: 80
-  swaySmoothness: 0.3
-  maxSwayAmount: 120
+  swayAmount: 35
+  maxSwayAmount: 40
+  positionalSwayAmount: 0.2
+  maxPositionalSwayAmount: 0.1
+  positionalSwaySmoothing: 8
+  smoothPosSwayX: 2
+  smoothPosSwayY: 2
+  swayCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 4
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 15
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5836183803064680627
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,9 @@ public class WeaponRecoil : MonoBehaviour
     public AnimationCurve backwardKickCurve;
     public AnimationCurve upwardKickCurve;
     public AnimationCurve rotationCurve;
+
+    [HideInInspector] public Vector3 recoilPositionOffset;
+    [HideInInspector] public Quaternion recoilRotationOffset = Quaternion.identity;
     void Start()
     {
         gun = GetComponent<Gun>();
@@ -24,18 +27,15 @@ public class WeaponRecoil : MonoBehaviour
             float upValue = upwardKickCurve.Evaluate(t);
             float rotationValue = rotationCurve.Evaluate(t);
 
-            Vector3 currentRecoilPunchOffset =  new Vector3(backValue * recoilBackward, upValue * recoilUpward, 0f);
-            Quaternion currentRecoilRotationOffset = Quaternion.Euler(rotationValue * recoilRotation, 0, 0);
-
-            transform.localPosition = gun.initialPosition + currentRecoilPunchOffset;
-            transform.localRotation = gun.initialRotation * currentRecoilRotationOffset;
+            recoilPositionOffset =  new Vector3(backValue * recoilBackward, upValue * recoilUpward, 0f);
+            recoilRotationOffset = Quaternion.Euler(rotationValue * recoilRotation, 0, 0);
 
             t += Time.deltaTime * recoilSpeed;
 
             yield return null;
         }
 
-        transform.localPosition = gun.initialPosition;
-        transform.localRotation = gun.initialRotation;
+        recoilPositionOffset = Vector3.zero;
+        recoilRotationOffset = Quaternion.identity; 
     }
 }

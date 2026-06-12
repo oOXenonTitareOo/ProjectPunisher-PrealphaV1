@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour
     public GameObject bullet;
     public GameObject weaponFlash;
     public GameObject muzzleFlash;
+    public GameObject droppedWeapon;
     public Rigidbody playerRb;
 
     void Start()
@@ -33,5 +34,11 @@ public class Gun : MonoBehaviour
     void Awake()
     {
         Instance = this;
+    }
+
+    public void Drop()
+    {
+        Instantiate(droppedWeapon, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,4 +32,14 @@ public class PlayerShooting : MonoBehaviour
             weaponShootScript.Shoot();
         }
     }
+
+    public void OnWeaponDrop()
+    {
+        if(gun != null)
+        {
+            gun.Drop();
+            gun = null;
+        }
+    }
+
 }

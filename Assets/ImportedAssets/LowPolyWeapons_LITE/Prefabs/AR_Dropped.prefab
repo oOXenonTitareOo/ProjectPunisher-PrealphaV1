@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 147346554812401107}
   - component: {fileID: 6954999235188494632}
   - component: {fileID: 2020904203459864625}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_02_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,9 +559,9 @@ GameObject:
   - component: {fileID: 6559362985659250037}
   - component: {fileID: 7937869573996747279}
   - component: {fileID: 1389536924408176315}
-  - component: {fileID: 7562425807136564635}
   - component: {fileID: 6123703252361500882}
-  m_Layer: 0
+  - component: {fileID: 6686243682064679921}
+  m_Layer: 10
   m_Name: AR_Dropped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,28 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: f82759ab02bb9cf46bddf79b54b1738c, type: 2}
   weaponPrefab: {fileID: 5786097810451525583, guid: 260ff1508afea5241b6511d8fbe92201, type: 3}
   lookRange: 3
---- !u!114 &7562425807136564635
+--- !u!65 &6123703252361500882
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786097810451525583}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.29, z: 0.08}
+  m_Center: {x: -0.17, y: 0.005, z: 0}
+--- !u!114 &6686243682064679921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -659,30 +680,9 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: OnFoot
+  m_DefaultActionMap: 3d9e9ceb-d966-4e50-b4a4-70f92a8e47a4
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!65 &6123703252361500882
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5786097810451525583}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.29, z: 0.08}
-  m_Center: {x: -0.17, y: 0.005, z: 0}
 --- !u!1 &5836183803064680627
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 1516268732596095734}
   - component: {fileID: 930050485265836895}
   - component: {fileID: 3463936877299748200}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_02_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10498,7 +10498,7 @@ GameObject:
   - component: {fileID: 1114251928721181772}
   - component: {fileID: 452387194236927299}
   - component: {fileID: 7075248624869939644}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_02_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12976,7 +12976,7 @@ GameObject:
   - component: {fileID: 7269915777578459166}
   - component: {fileID: 4674392848918489184}
   - component: {fileID: 6881097402786752674}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82999,7 +82999,7 @@ GameObject:
   - component: {fileID: 8789160855611009177}
   - component: {fileID: 9008831621044463944}
   - component: {fileID: 1786110175939612880}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_02_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88783,7 +88783,7 @@ GameObject:
   - component: {fileID: 7527377165839464338}
   - component: {fileID: 6934935622065414979}
   - component: {fileID: 4591246764167546236}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_02_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93799,7 +93799,7 @@ GameObject:
   - component: {fileID: 4388394057938929558}
   - component: {fileID: 9160123578403175607}
   - component: {fileID: 6296372060351367694}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_02_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
