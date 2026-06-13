@@ -26,8 +26,6 @@ public class PlayerLook : MonoBehaviour
 
     void HandleMouseLook()
     {
-
-        Debug.Log("Look Input: " + lookInput);
         float mouseX = lookInput.x * mouseSensitivity;
         float mouseY = lookInput.y * mouseSensitivity;
 
@@ -36,7 +34,5 @@ public class PlayerLook : MonoBehaviour
 
         cam.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
-
-        lookInput = Vector2.zero;
     }
 }

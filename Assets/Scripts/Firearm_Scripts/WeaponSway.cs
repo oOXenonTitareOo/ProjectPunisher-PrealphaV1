@@ -9,6 +9,8 @@ public class WeaponSway : MonoBehaviour
     public float positionalSwayAmount = 0.2f;
     public float maxPositionalSwayAmount = 0.06f;
     public float positionalSwaySmoothing = 1f;
+    private float mouseX;
+    private float mouseY;
     private float smoothX;
     private float smoothY;
     public float smoothPosSwayX;
@@ -30,8 +32,11 @@ public class WeaponSway : MonoBehaviour
     {
         if (weaponReloadScript != null && weaponReloadScript.isRealoading) return;
 
-        float mouseX = -Input.GetAxis("Mouse X") * swayAmount;
-        float mouseY = -Input.GetAxis("Mouse Y") * swayAmount;
+        if (Mouse.current != null)
+        {
+            mouseX = -Mouse.current.delta.x.ReadValue() * (swayAmount * 0.2f);
+            mouseY = -Mouse.current.delta.y.ReadValue() * (swayAmount * 0.2f);
+        }
 
         mouseX = Mathf.Clamp(mouseX, -maxSwayAmount, maxSwayAmount);
         mouseY = Mathf.Clamp(mouseY, -maxSwayAmount, maxSwayAmount);

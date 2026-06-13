@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
@@ -13,11 +13,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private Rigidbody rb;
     private Vector2 moveInput;
     private bool isGrounded;
-    private PlayerInput playerInput;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        playerInput = new PlayerInput();
     }
 
     void Update()
