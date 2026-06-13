@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7491298369989207124}
   m_Layer: 0
   m_Name: AR_Bullet
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5341742223406746680}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 0.00001
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -97,7 +97,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!96 &7491298369989207124
 TrailRenderer:
   serializedVersion: 4

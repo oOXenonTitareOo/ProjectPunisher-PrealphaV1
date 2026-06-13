@@ -71,7 +71,7 @@ public class WeaponSway : MonoBehaviour
 
         Vector3 swayPosition = new Vector3(smoothPosSwayX, smoothPosSwayY, 0f);
 
-        transform.localPosition = gun.initialPosition + swayPosition+ weaponRecoilScript.recoilPositionOffset;
+        transform.localPosition = gun.initialPosition + swayPosition + weaponRecoilScript.recoilPositionOffset;
         transform.localRotation = initialRotation * swayRotation * weaponRecoilScript.recoilRotationOffset;
     }
 

@@ -163,6 +163,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""4620a4f7-199b-4e0a-b3d1-766b893aaf3a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SprintRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""42b5526c-1b48-438a-928e-f58b705e4674"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -297,6 +315,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""WeaponDrop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d334f23-11ff-492e-8c8e-f86672f2e2ab"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a4c29f0-3bdf-4604-8dae-0a3e03edea79"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SprintRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -313,6 +353,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Reload = m_OnFoot.FindAction("Reload", throwIfNotFound: true);
         m_OnFoot_WeaponPickUp = m_OnFoot.FindAction("WeaponPickUp", throwIfNotFound: true);
         m_OnFoot_WeaponDrop = m_OnFoot.FindAction("WeaponDrop", throwIfNotFound: true);
+        m_OnFoot_Sprint = m_OnFoot.FindAction("Sprint", throwIfNotFound: true);
+        m_OnFoot_SprintRelease = m_OnFoot.FindAction("SprintRelease", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -401,6 +443,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Reload;
     private readonly InputAction m_OnFoot_WeaponPickUp;
     private readonly InputAction m_OnFoot_WeaponDrop;
+    private readonly InputAction m_OnFoot_Sprint;
+    private readonly InputAction m_OnFoot_SprintRelease;
     /// <summary>
     /// Provides access to input actions defined in input action map "OnFoot".
     /// </summary>
@@ -444,6 +488,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "OnFoot/WeaponDrop".
         /// </summary>
         public InputAction @WeaponDrop => m_Wrapper.m_OnFoot_WeaponDrop;
+        /// <summary>
+        /// Provides access to the underlying input action "OnFoot/Sprint".
+        /// </summary>
+        public InputAction @Sprint => m_Wrapper.m_OnFoot_Sprint;
+        /// <summary>
+        /// Provides access to the underlying input action "OnFoot/SprintRelease".
+        /// </summary>
+        public InputAction @SprintRelease => m_Wrapper.m_OnFoot_SprintRelease;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -494,6 +546,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @WeaponDrop.started += instance.OnWeaponDrop;
             @WeaponDrop.performed += instance.OnWeaponDrop;
             @WeaponDrop.canceled += instance.OnWeaponDrop;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
+            @SprintRelease.started += instance.OnSprintRelease;
+            @SprintRelease.performed += instance.OnSprintRelease;
+            @SprintRelease.canceled += instance.OnSprintRelease;
         }
 
         /// <summary>
@@ -529,6 +587,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @WeaponDrop.started -= instance.OnWeaponDrop;
             @WeaponDrop.performed -= instance.OnWeaponDrop;
             @WeaponDrop.canceled -= instance.OnWeaponDrop;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
+            @SprintRelease.started -= instance.OnSprintRelease;
+            @SprintRelease.performed -= instance.OnSprintRelease;
+            @SprintRelease.canceled -= instance.OnSprintRelease;
         }
 
         /// <summary>
@@ -625,5 +689,19 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnWeaponDrop(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Sprint" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSprint(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SprintRelease" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSprintRelease(InputAction.CallbackContext context);
     }
 }
