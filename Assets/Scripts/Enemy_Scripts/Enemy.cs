@@ -46,11 +46,9 @@ public class Enemy : MonoBehaviour
         GameObject patrolPointParent = GameObject.FindWithTag("PatrolPoint");
         patrolPoints = patrolPointParent.GetComponentsInChildren<Transform>().Where(t => t != patrolPointParent.transform).ToArray();
 
-        Debug.Log("Megtalált pontok száma: " + patrolPoints.Length);
         if(patrolPoints.Length > 0)
         {
             currentTarget = patrolPoints[0].position;
-            Debug.Log("Az első pont koordinátája: " + patrolPoints[0].position);
         }
 
         idleTimeCounter = idleTime;
