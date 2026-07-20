@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     private Vector3 lastKnownPlayerPosition;
     public float positionThreshold;
     public float idleTime = 5f;
-    public float attackDistance = 15f;
+    public float attackDistance = 5f;
     public float maxVisionDistance = 20f;
     public float minChasingHealth = 30f;
     private float idleTimeCounter;
