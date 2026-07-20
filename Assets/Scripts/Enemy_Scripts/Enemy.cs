@@ -6,10 +6,17 @@ using UnityEngine.AI;
 using System.Linq;
 using UnityEngine.Animations;
 using UnityEngine.UIElements;
+using JetBrains.Annotations;
 
 public class Enemy : MonoBehaviour
 {
     public int health = 100;
+    public GameObject bulletPrefab;
+    public GameObject weaponFlash;
+    public Transform bulletSpawnPoint;
+    public float bloom;
+    public float fireRate;
+    private float lastShotTime = 0;
     private Rigidbody rb;
     public Material hitMaterial;
     private Renderer rend;
@@ -22,7 +29,7 @@ public class Enemy : MonoBehaviour
     private Vector3 lastKnownPlayerPosition;
     public float positionThreshold;
     public float idleTime = 5f;
-    public float attackDistance = 5f;
+    public float attackDistance = 15f;
     public float maxVisionDistance = 20f;
     public float minChasingHealth = 30f;
     private float idleTimeCounter;
@@ -203,6 +210,8 @@ public class Enemy : MonoBehaviour
 
         LookAtPlayer();
 
+        Shoot();
+
         if(Vector3.Distance(transform.position, playerTransform.position) > attackDistance || !canSeePlayer)
         {
             if(health < minChasingHealth)
@@ -224,7 +233,7 @@ public class Enemy : MonoBehaviour
         {
             state = State.Patrolling;
         }
-        else if(!canSeePlayer && Vector3.Distance(transform.position, playerTransform.position) <= attackDistance)
+        else if(canSeePlayer && Vector3.Distance(transform.position, playerTransform.position) <= attackDistance)
         {
             state = State.Attacking;
         }
@@ -247,5 +256,28 @@ public class Enemy : MonoBehaviour
         rend.material = hitMaterial;
         yield return new WaitForSeconds(0.1f);
         rend.material = originalMaterial;
+    }
+
+    private void Shoot()
+    {
+        if(Time.time > lastShotTime + fireRate)
+        {
+            Vector3 directionToPlayer = playerTransform.position - transform.position;
+            directionToPlayer.Normalize();
+
+            Quaternion bulletRotation = Quaternion.LookRotation(directionToPlayer);
+
+            float maxInaccuracy = 10f;
+            float currentInaccuracy = bloom * maxInaccuracy;
+            float randomJaw = UnityEngine.Random.Range(-currentInaccuracy, currentInaccuracy);
+            float randomPitch = UnityEngine.Random.Range(-currentInaccuracy, currentInaccuracy);
+
+            bulletRotation *= Quaternion.Euler(randomPitch, randomJaw + 90,  0f);
+
+            Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletRotation);
+            Instantiate(weaponFlash, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            lastShotTime = Time.time;
+            Debug.Log("ENEMY - Shoot");
+        }
     }
 }
