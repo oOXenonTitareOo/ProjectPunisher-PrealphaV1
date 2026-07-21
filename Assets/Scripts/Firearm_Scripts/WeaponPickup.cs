@@ -1,71 +1,46 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder.Shapes;
 
 public class WeaponPickup : MonoBehaviour
 {
     public Material highlightMaterial;
     private Material[] originalMaterials;
-    private MeshRenderer[] meshRenderers;
+    private Renderer[] renderers;
     public GameObject weaponPrefab;
-    public float lookRange = 3f;
-    private bool isLookedAt = false;
-    private Camera playerCam;
     private PlayerShooting player;
     void Start()
     {
-        meshRenderers = GetComponentsInChildren<MeshRenderer>();
-        originalMaterials = new Material[meshRenderers.Length];
-        for(int i =  0; i < meshRenderers.Length; i++)
+        renderers = GetComponentsInChildren<Renderer>();
+        originalMaterials = new Material[renderers.Length];
+        for(int i =  0; i < renderers.Length; i++)
         {
-            originalMaterials[i] = meshRenderers[i].material;
+            originalMaterials[i] = renderers[i].material;
         }
 
         player = FindAnyObjectByType<PlayerShooting>();
-        playerCam = player.GetComponentInChildren<Camera>();
     }
 
-    void Update()
+    public void SetLookedAt(bool lookedAt)
     {
-        Ray ray = new Ray(playerCam.transform.position, playerCam.transform.forward);
-        if(Physics.Raycast(ray, out RaycastHit hit, lookRange))
-        {
-            if(hit.collider.GetComponentInParent<WeaponPickup>() == this)
-            {
-                if(!isLookedAt)
-                {
-                    SetLookedAt(true);
-                }
-                return;
-            }
-        }
-        if(isLookedAt)
-        {
-            SetLookedAt(false);
-        }    
-    }
-    void SetLookedAt(bool lookedAt)
-    {
-        isLookedAt = lookedAt;
-
+        Debug.Log("item in sight" + lookedAt);
         if(lookedAt)
         {
-            foreach(MeshRenderer mr in meshRenderers)
+            foreach(Renderer mr in renderers)
             {
                 mr.material = highlightMaterial;
             }
         }
         else
         {
-            for(int i = 0; i < meshRenderers.Length; i++)
+            for(int i = 0; i < renderers.Length; i++)
             {
-                meshRenderers[i].material = originalMaterials[i];
+                renderers[i].material = originalMaterials[i];
             }
         }
     }
-    public void OnWeaponPickUp()
+    public void PickupThisWeapon()
     {
-        if(!isLookedAt) return;
-
         player.OnWeaponDrop();
 
         GameObject newWeapon = Instantiate(weaponPrefab, player.gunHolder);
@@ -73,7 +48,6 @@ public class WeaponPickup : MonoBehaviour
         newWeapon.transform.localRotation = Quaternion.identity;
 
         player.gun = newWeapon.GetComponent<Gun>();
-
         player.weaponReloadScript = newWeapon.GetComponent<WeaponReload>();
         player.weaponShootScript = newWeapon.GetComponent<WeaponShoot>();
         player.weaponSwayScript = newWeapon.GetComponent<WeaponSway>();

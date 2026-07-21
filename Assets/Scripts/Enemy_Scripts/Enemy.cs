@@ -109,32 +109,37 @@ public class Enemy : MonoBehaviour
     private void LookForPlayer()
     {
         Vector3 directionToPlayer = playerTransform.position - transform.position;
-        Vector3 rayStart = transform.position + Vector3.up * 1f;
         Vector3 rayDir = directionToPlayer.normalized;
 
         float angleToPlayer = Vector3.Angle(transform.forward, rayDir);
 
-
-        if(Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, maxVisionDistance))
+        if(angleToPlayer <= fieldOfView / 2f)
         {
-            canSeePlayer = hit.transform == playerTransform;
-            if(canSeePlayer)
-            {   
-                lastKnownPlayerPosition = playerTransform.position;
+            if(Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, maxVisionDistance))
+            {
+                canSeePlayer = hit.transform == playerTransform;
+                if(canSeePlayer)
+                {   
+                    lastKnownPlayerPosition = playerTransform.position;
 
-                if(state != State.Attacking)
+                    if(state != State.Attacking)
+                    {
+                        state = State.Chasing;
+                    }
+                }
+                else
                 {
-                    state = State.Chasing;
+                    canSeePlayer = false;
                 }
             }
             else
             {
-            canSeePlayer = false;
+                canSeePlayer = false;
             }
         }
         else
         {
-            canSeePlayer = false;
+            canSeePlayer = false;        
         }
     }
     private void LookAtPlayer()

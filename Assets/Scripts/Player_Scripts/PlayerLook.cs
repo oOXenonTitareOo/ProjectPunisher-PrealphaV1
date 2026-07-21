@@ -27,7 +27,7 @@ public class PlayerLook : MonoBehaviour
     void Update()
     {
         HandleMouseLook();
-        HandleShake();
+        HandleShake();    
     }
 
     private void OnLook(InputValue value)
