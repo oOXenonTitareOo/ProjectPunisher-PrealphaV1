@@ -4,6 +4,7 @@ public class WeaponShellEjection : MonoBehaviour
 {
     private Gun gun;
     public Transform shellSpawnPoint;
+    private Transform shellParent;
     public float shellEjectionForce = 0.5f;
     public float shellSpin = 0.001f;
     public GameObject Shell;
@@ -11,17 +12,31 @@ public class WeaponShellEjection : MonoBehaviour
     private Vector3 baseEjectionDirection;
     private Vector3 finalEjectionDirection;
     private Rigidbody shellRb;
+    public string targetGroupName = "GROUP-PLAYER_SHELLS";
     void Start()
     {
         gun = GetComponent<Gun>();
+        FindShellParent();
+    }
+    public void ChangeShellGroup(string newGroupName)
+    {
+        targetGroupName = newGroupName;
+        FindShellParent();
+    }
+    private void FindShellParent()
+    {
+        GameObject parentObj = GameObject.Find(targetGroupName);
+        if (parentObj != null)
+        {
+            shellParent = parentObj.transform;
+        }
     }
     public void EjectShell()
     {
-        Debug.Log("EjectShell method has successfully started!");
-        GameObject shell = Instantiate(Shell, shellSpawnPoint.position, shellSpawnPoint.rotation);
+        GameObject shell = Instantiate(Shell, shellSpawnPoint.position, shellSpawnPoint.rotation, shellParent);
         shellRb = shell.GetComponent<Rigidbody>();
 
-        if (gun.playerRb != null)
+        if (gun != null && gun.playerRb != null)
         {
             shellRb.linearVelocity = gun.playerRb.linearVelocity;
         }

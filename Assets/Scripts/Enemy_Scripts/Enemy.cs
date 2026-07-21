@@ -14,19 +14,10 @@ public class Enemy : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject weaponFlash;
     public Transform bulletSpawnPoint;
+    public Transform[] patrolPoints;
+    private Transform playerTransform;
     public float bloom;
     public float fireRate;
-    private float lastShotTime = 0;
-    private Rigidbody rb;
-    public Material hitMaterial;
-    private Renderer rend;
-    private Material originalMaterial;
-
-    // AI Settings
-    private NavMeshAgent agent;
-    public int currentPointIndex = 0;
-    public Vector3 currentTarget;
-    private Vector3 lastKnownPlayerPosition;
     public float positionThreshold;
     public float idleTime = 5f;
     public float attackDistance = 5f;
@@ -34,13 +25,20 @@ public class Enemy : MonoBehaviour
     public float minChasingHealth = 30f;
     private float idleTimeCounter;
     public float fieldOfView = 120f;
-    public Transform[] patrolPoints;
-    private Transform playerTransform;
+    private float lastShotTime = 0;
+    private Rigidbody rb;
+    public Material hitMaterial;
+    private Renderer rend;
+    private Material originalMaterial;
+    private NavMeshAgent agent;
+    public int currentPointIndex = 0;
+    public Vector3 currentTarget;
+    private Vector3 lastKnownPlayerPosition;
     private bool canSeePlayer;
     public enum State { Idle, Patrolling, Chasing, Attacking}
     public State state = State.Idle;
     private Quaternion idleStartrotation;
-
+    private WeaponShellEjection weaponShellEjectionScript;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -59,6 +57,12 @@ public class Enemy : MonoBehaviour
         }
 
         idleTimeCounter = idleTime;
+
+        weaponShellEjectionScript = GetComponent<WeaponShellEjection>();
+        if (weaponShellEjectionScript != null)
+        {
+            weaponShellEjectionScript.ChangeShellGroup("GROUP-ENEMY_SHELLS");
+        }
     }
 
     void Update()
@@ -271,6 +275,7 @@ public class Enemy : MonoBehaviour
             directionToPlayer.Normalize();
 
             Quaternion bulletRotation = Quaternion.LookRotation(directionToPlayer);
+            Quaternion flashRotation = bulletSpawnPoint.rotation * Quaternion.Euler(0f,90f,0f);
 
             float maxInaccuracy = 10f;
             float currentInaccuracy = bloom * maxInaccuracy;
@@ -280,9 +285,11 @@ public class Enemy : MonoBehaviour
             bulletRotation *= Quaternion.Euler(randomPitch, randomJaw + 90,  0f);
 
             Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletRotation);
+            Instantiate(weaponFlash, bulletSpawnPoint.position, flashRotation);
             Instantiate(weaponFlash, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             lastShotTime = Time.time;
-            Debug.Log("ENEMY - Shoot");
+
+            weaponShellEjectionScript.EjectShell();
         }
     }
 }
