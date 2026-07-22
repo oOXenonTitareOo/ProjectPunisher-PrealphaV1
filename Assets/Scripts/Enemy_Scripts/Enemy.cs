@@ -115,6 +115,10 @@ public class Enemy : MonoBehaviour
         Vector3 directionToPlayer = playerTransform.position - transform.position;
         Vector3 rayDir = directionToPlayer.normalized;
 
+        // Ai Vision Debug
+        DebugVisualizer.DrawArrow(transform.position, transform.forward * 2f, Color.white);
+        DebugVisualizer.DrawArrow(transform.position, rayDir * maxVisionDistance, canSeePlayer ? Color.green : Color.red);
+
         float angleToPlayer = Vector3.Angle(transform.forward, rayDir);
 
         if(angleToPlayer <= fieldOfView / 2f)
@@ -269,11 +273,13 @@ public class Enemy : MonoBehaviour
 
     private void Shoot()
     {
+        Vector3 directionToPlayer = playerTransform.position - transform.position;
+        directionToPlayer.Normalize();
+
+        DebugVisualizer.DrawArrow(bulletSpawnPoint.position, directionToPlayer * 5f, Color.magenta);
+
         if(Time.time > lastShotTime + fireRate)
         {
-            Vector3 directionToPlayer = playerTransform.position - transform.position;
-            directionToPlayer.Normalize();
-
             Quaternion bulletRotation = Quaternion.LookRotation(directionToPlayer);
             Quaternion flashRotation = bulletSpawnPoint.rotation * Quaternion.Euler(0f,90f,0f);
 
