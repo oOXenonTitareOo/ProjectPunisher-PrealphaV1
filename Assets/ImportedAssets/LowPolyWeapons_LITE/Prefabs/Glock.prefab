@@ -346,6 +346,7 @@ MonoBehaviour:
   shellEjectionForce: 20
   shellSpin: 10
   Shell: {fileID: 3575611928538805115, guid: ce49bca365f3af04c800a06b609f63e0, type: 3}
+  targetGroupName: GROUP-PLAYER_SHELLS
 --- !u!114 &5217146478402560633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb1df7daa2ca0942aa939a12f36189d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponShoot
+  shootingSFX: {fileID: 8300000, guid: b3bd50885749d98478545be93700ce74, type: 3}
   muzzleFlashSize: 0.05
 --- !u!114 &3746605045511461032
 MonoBehaviour:

@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
     public State state = State.Idle;
     private Quaternion idleStartrotation;
     private WeaponShellEjection weaponShellEjectionScript;
+    public AudioClip shootingSFX;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -296,6 +297,8 @@ public class Enemy : MonoBehaviour
             lastShotTime = Time.time;
 
             weaponShellEjectionScript.EjectShell();
+
+            AudioManager.Instance.PlaySFX(shootingSFX, 0.5f);
         }
     }
 }

@@ -6,6 +6,7 @@ public class WeaponShoot : MonoBehaviour
     private WeaponReload weaponReloadScript;
     private WeaponRecoil weaponRecoilScript;
     private WeaponShellEjection weaponShellEjectionScript;
+    public AudioClip shootingSFX;
     public float muzzleFlashSize = 0.1f;
     void Start()
     {
@@ -40,5 +41,7 @@ public class WeaponShoot : MonoBehaviour
 
         weaponRecoilScript.StopAllCoroutines();
         weaponRecoilScript.StartCoroutine("Recoil");
+
+        AudioManager.Instance.PlaySFX(shootingSFX, 0.25f);
     }
 }

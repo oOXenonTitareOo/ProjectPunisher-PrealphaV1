@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,9 +18,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private bool isGrounded;
     private bool isSprinting = false;
+    public AudioClip footStepSFX;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(PlayFootStepSFX());
     }
 
     void Update()
@@ -74,5 +77,17 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = transform.right * moveInput.x + transform.forward * moveInput.y;
         direction.Normalize();
         rb.linearVelocity = new Vector3(direction.x * currentSpeed, rb.linearVelocity.y, direction.z * currentSpeed);
+    }
+
+    IEnumerator PlayFootStepSFX()
+    {
+        while (true)
+        {
+            if(rb.linearVelocity.magnitude > 0.1f && isGrounded)
+            {
+                AudioManager.Instance.PlaySFX(footStepSFX);
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

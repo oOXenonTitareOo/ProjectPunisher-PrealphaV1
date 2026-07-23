@@ -19714,19 +19714,32 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5341742223406746680, guid: 9c3cddd6060b7cc4eadfb9cefcf6e7db, type: 3}
   weaponFlash: {fileID: 1385555859113568446, guid: 643f7b4af236e1543880b75d83139956, type: 3}
   bulletSpawnPoint: {fileID: 4770231959826328013}
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   bloom: 0.75
   fireRate: 0.5
-  hitMaterial: {fileID: 2100000, guid: fef187cf26ee9aa43a574467b6da40a8, type: 2}
-  currentPointIndex: 0
-  currentTarget: {x: 0, y: 0, z: 0}
   positionThreshold: 2
   idleTime: 5
   attackDistance: 5
   maxVisionDistance: 15
   minChasingHealth: 30
   fieldOfView: 110
-  patrolPoints: []
+  hitMaterial: {fileID: 2100000, guid: fef187cf26ee9aa43a574467b6da40a8, type: 2}
+  currentPointIndex: 0
+  currentTarget: {x: 0, y: 0, z: 0}
   state: 0
+  shootingSFX: {fileID: 8300000, guid: c66d719afe92b6e4784ddd380d42bcbd, type: 3}
 --- !u!195 &6889462730340311552
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -19837,6 +19850,7 @@ MonoBehaviour:
   shellEjectionForce: 20
   shellSpin: 10
   Shell: {fileID: 5341742223406746680, guid: 181a6ccdb4e10e34ba0fac3868e7949e, type: 3}
+  targetGroupName: GROUP-PLAYER_SHELLS
 --- !u!1 &6800153105304643114
 GameObject:
   m_ObjectHideFlags: 0
