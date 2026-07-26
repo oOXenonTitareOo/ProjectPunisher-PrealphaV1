@@ -277,6 +277,7 @@ public class Enemy : MonoBehaviour
         Vector3 directionToPlayer = playerTransform.position - transform.position;
         directionToPlayer.Normalize();
 
+        // jelző vonalak
         DebugVisualizer.DrawArrow(bulletSpawnPoint.position, directionToPlayer * 5f, Color.magenta);
 
         if(Time.time > lastShotTime + fireRate)
