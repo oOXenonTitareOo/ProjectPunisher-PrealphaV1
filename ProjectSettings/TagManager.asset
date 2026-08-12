@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Damage
   - PatrolPoint
+  - PlayerBullet
+  - EnemyBullet
+  - Enemy
+  - Enviroment
   layers:
   - Default
   - TransparentFX
@@ -20,8 +24,8 @@ TagManager:
   - Dropped Item
   - Enemy
   - Obstacle
-  - 
-  - 
+  - EnemyBullet
+  - PlayerBullet
   - 
   - 
   - 

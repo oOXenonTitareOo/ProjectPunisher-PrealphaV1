@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Damage")
+        if(collision.gameObject.tag == "PlayerBullet")
         {
             health -= 10;
 
@@ -109,6 +109,7 @@ public class Enemy : MonoBehaviour
                 state = State.Chasing;
             }
             SetLastKnownPlayerPosition();
+            Destroy(collision.gameObject);
         }
     }
     private void LookForPlayer()

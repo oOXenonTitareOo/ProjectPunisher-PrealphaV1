@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip hitSFX;
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Damage")
+        if(collision.gameObject.tag == "EnemyBullet")
         {
             DecreaseHealth(10);
         }

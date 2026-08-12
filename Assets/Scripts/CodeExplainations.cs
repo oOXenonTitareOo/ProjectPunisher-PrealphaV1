@@ -74,3 +74,4 @@ public class PlayerMovement : MonoBehaviour // Class and Class Name. Class name 
         rb.linearVelocity = new Vector3(direction.x * currentSpeed, rb.linearVelocity.y, direction.z * currentSpeed);
     }
 }*/
+/*Extra comment*/
