@@ -300,7 +300,7 @@ public class Enemy : MonoBehaviour
 
             weaponShellEjectionScript.EjectShell();
 
-            AudioManager.Instance.PlaySFX(shootingSFX, 0.5f);
+            AudioManager.Instance.PlaySFX(shootingSFX, bulletSpawnPoint.position);
         }
     }
 }

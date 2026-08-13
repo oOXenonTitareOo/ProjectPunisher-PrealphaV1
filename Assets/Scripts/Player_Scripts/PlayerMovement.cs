@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(rb.linearVelocity.magnitude > 0.1f && isGrounded)
             {
-                AudioManager.Instance.PlaySFX(footStepSFX);
+                AudioManager.Instance.PlaySFX(footStepSFX, transform.position);
             }
             yield return new WaitForSeconds(0.5f);
         }

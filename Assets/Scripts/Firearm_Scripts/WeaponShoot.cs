@@ -42,6 +42,6 @@ public class WeaponShoot : MonoBehaviour
         weaponRecoilScript.StopAllCoroutines();
         weaponRecoilScript.StartCoroutine("Recoil");
 
-        AudioManager.Instance.PlaySFX(shootingSFX, 0.25f);
+        AudioManager.Instance.PlaySFX(shootingSFX, gun.bulletSpawnPoint.position, 0.25f);
     }
 }

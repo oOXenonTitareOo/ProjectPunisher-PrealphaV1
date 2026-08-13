@@ -6,9 +6,11 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip hitSFX;
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "EnemyBullet")
+        if(collision.gameObject.CompareTag("EnemyBullet"))
         {
             DecreaseHealth(10);
+
+            Destroy(collision.gameObject);
         }
     }
 
@@ -17,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
         health -= decreaseAmount;
         PlayerLook.Instance.AddShake(0.1f, 0.25f);
         UIManager.Instance.InstantiateHitUI();
-        AudioManager.Instance.PlaySFX(hitSFX);
+        AudioManager.Instance.PlaySFX(hitSFX, transform.position);
 
         if(health <= 0)
         {

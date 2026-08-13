@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,20 +11,30 @@ public class AudioManager : MonoBehaviour
         Instance = this;
     }
 
-    public void PlaySFX(AudioClip audioClip, float volume = 1f)
+    public void PlaySFX(AudioClip audioClip, Vector3 position, float volume = 1f)
     {
-        StartCoroutine(PlaySFXCoroutine(audioClip, volume));
+        StartCoroutine(PlaySFXCoroutine(audioClip, position, volume));
     }
 
-    IEnumerator PlaySFXCoroutine(AudioClip audioClip, float volume = 1f)
+    IEnumerator PlaySFXCoroutine(AudioClip audioClip, Vector3 position, float volume = 1f)
     {
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        GameObject tempAudioHost = new GameObject("TempAudio_" + audioClip.name);
+        tempAudioHost.transform.position = position;
+
+        AudioSource audioSource = tempAudioHost.AddComponent<AudioSource>();
         audioSource.clip = audioClip;
         audioSource.volume = volume;
         audioSource.Play();
 
-        yield return new WaitForSeconds(audioClip.length * 2f);
+        audioSource.spatialBlend = 1f;
+        audioSource.minDistance = 2f;
+        audioSource.maxDistance = 30;
+        audioSource.rolloffMode = AudioRolloffMode.Linear;
 
-        Destroy(audioSource);
+        audioSource.Play();
+
+        yield return new WaitForSeconds(audioClip.length);
+
+        Destroy(tempAudioHost);
     }
 }
